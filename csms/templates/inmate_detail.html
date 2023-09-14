@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block title %} Print Inmate Details {% endblock %}
+
+{% block body %}
+
+<section>
+    <div class="section-header">
+        <ol class="breadcrumb">
+            <li class="active">Inmate Details</li>
+        </ol>
+    </div>
+    <div class="section-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-printable style-default-light">
+                    <div class="card-head">
+                        <div class="tools">
+                            <div class="btn-group">
+                                <a class="btn btn-floating-action btn-primary" href="javascript:void(0);" onclick="javascript:window.print();"><i class="md md-print"></i></a>
+                            </div>
+                        </div>
+                    </div><!--end .card-head -->
+                    <div class="card-body style-default-bright" id="print">
+
+                        <!-- BEGIN INMATE HEADER -->
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <h1 class="text-light" style="margin-top: 0px; color: #f70b0b">Inmate Details</h1>
+                            </div>
+                            <div class="col-xs-4 text-right">
+                                <h1 class="text-light text-default-light">Inmate ID: {{ inmate.inmate_id }}</h1>
+                            </div>
+                        </div><!--end .row -->
+                        <!-- END INMATE HEADER -->
+
+                        <br/>
+
+                        <!-- BEGIN INMATE DESCRIPTION -->
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <h4 class="text-light">Inmate Information</h4>
+                                <address>
+                                    <strong>{{ inmate.first_name }} {{ inmate.last_name }}</strong><br>
+                                    <p><strong>Date of Birth:</strong> {{ inmate.date_of_birth }}</p>
+                                    <p><strong>Facility:</strong> {{ inmate.facility.name }}</p>
+                                    <p><strong>Gender:</strong> {{ inmate.gender }}</p>
+                                    <p><strong>Admission Date:</strong> {{ inmate.admission_date }}</p>
+                                    <p><strong>Release Date:</strong> {{ inmate.release_date }}</p>
+                                </address>
+                            </div><!--end .col -->
+                            <div class="col-xs-4">
+                                <div class="well">
+                                    <div class="clearfix">
+                                        <div class="pull-left"> Admission Date: </div>
+                                        <div class="pull-right"> {{ inmate.admission_date }} </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="pull-left"> Release Date: </div>
+                                        <div class="pull-right"> {{ inmate.release_date }} </div>
+                                    </div>
+                                </div>
+                            </div><!--end .col -->
+                        </div><!--end .row -->
+                        <!-- END INMATE DESCRIPTION -->
+
+                    </div><!--end .card-body -->
+                </div><!--end .card -->
+            </div><!--end .col -->
+        </div><!--end .row -->
+    </div><!--end .section-body -->
+</section>
+
+{% endblock %}
